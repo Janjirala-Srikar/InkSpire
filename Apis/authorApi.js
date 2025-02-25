@@ -7,6 +7,9 @@ const { requireAuth, clerkMiddleware } = require("@clerk/express");
 require("dotenv").config();
 
 // Route to create a new author
+authorApp.get('/',async(req,res)=>{
+  res.send({message:"Authot"})
+})
 authorApp.post("/author", expressAsyncHandler(createUserOrAuthor));
 
 // Route to create a new article
