@@ -26,13 +26,15 @@ mongoose
 // Middleware
 app.use(exp.json());
 
-app.get('/',async(req,res)=>{
-   res.send({message:"Successfull Connection"})
-})
+
 // Connect API routes
 app.use("/user-api", userApp);
 app.use("/author-api", authorApp);
 app.use("/admin-api", adminApp);
+
+app.get('/',async(req,res)=>{
+  res.send({message:"Successfull Connection"})
+})
 
 // Global error handler
 app.use((err, req, res, next) => {
