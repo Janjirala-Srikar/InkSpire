@@ -10,7 +10,7 @@ require("dotenv").config();
 authorApp.get('/',async(req,res)=>{
   res.send({message:"Author"})
 })
-authorApp.get('/a',async(req,res)=>{
+authorApp.get('/a',expressAsyncHandler(req,res)=>{
   res.send({message:"Hello"})
 })
 authorApp.post("/author", expressAsyncHandler(createUserOrAuthor));
