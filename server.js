@@ -26,6 +26,9 @@ mongoose
 // Middleware
 app.use(exp.json());
 
+app.use('/',async(req,res)=>{
+   res.send({message:"Successfull Connection"})
+})
 // Connect API routes
 app.use("/user-api", userApp);
 app.use("/author-api", authorApp);
