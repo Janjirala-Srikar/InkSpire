@@ -10,7 +10,9 @@ require("dotenv").config();
 authorApp.get('/',async(req,res)=>{
   res.send({message:"Author"})
 })
-
+authorApp.get('/a',async(req,res)=>{
+  res.send({message:"Hello"})
+})
 authorApp.post("/author", expressAsyncHandler(createUserOrAuthor));
 
 // Route to create a new article
