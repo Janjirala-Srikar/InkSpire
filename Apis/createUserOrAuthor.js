@@ -1,4 +1,4 @@
-const UserAuthor=require("../models/userAuthorModel")
+const UserAuthor=require("../Models/userAuthorModel")
 
 async function createUserOrAuthor(req,res){
     //business logic to create User or Author
