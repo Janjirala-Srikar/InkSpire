@@ -1,0 +1,150 @@
+/* Articles.css - Fixed row alignment */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.articles-container {
+  width: 100%;
+}
+
+/* Grid container with proper width and fixed layout */
+.articles-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Card sizing - ensures consistent widths across rows */
+.article-card {
+  flex: 0 0 calc(33.333% - 14px);
+  max-width: calc(33.333% - 14px);
+  margin-bottom: 0;
+}
+
+/* Ensure cards in second row align properly */
+.articles-grid:after {
+  content: '';
+  flex: 0 0 calc(33.333% - 14px);
+  max-width: calc(33.333% - 14px);
+}
+
+/* Card styling */
+.article-card-inner {
+  height: 100%;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Category badge */
+.category-badge {
+  background-color: #7c3aed;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50px;
+  display: inline-block;
+}
+
+/* Article title */
+.article-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 10px 0;
+}
+
+/* Article excerpt */
+.article-excerpt {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+/* Read more link */
+.read-more-link {
+  color: #a17bff;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.read-more-link:hover {
+  color: #b08aff;
+}
+
+/* Author info section */
+.author-info {
+  display: flex;
+  align-items: center;
+}
+
+/* Author avatar */
+.author-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #ef6c00;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* Author name */
+.author-name {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  margin-left: 8px;
+}
+
+/* Modified date */
+.modified-date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.7rem;
+}
+
+/* Article footer spacing */
+.article-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .article-card {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .articles-grid {
+    gap: 15px;
+  }
+}

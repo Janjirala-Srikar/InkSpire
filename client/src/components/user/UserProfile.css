@@ -1,0 +1,68 @@
+.user-profile-container {
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  
+  .header {
+    margin-bottom: 2rem;
+  }
+  
+  .profile-title {
+    color: goldenrod;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 1.2rem;
+  }
+  
+  .articles-section {
+    margin-top: 2rem;
+  }
+  
+  .section-title {
+    color: goldenrod;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .article-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  }
+  
+  .article-title {
+    color: goldenrod;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .article-content {
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .no-articles {
+    color: #ccc;
+    font-size: 1.2rem;
+    text-align: center;
+  }

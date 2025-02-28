@@ -1,0 +1,10 @@
+.box2{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10%;
+  }
+  body {
+    background-image: linear-gradient(#1c1b1a, #1c1b1a); 
+  }
+  
