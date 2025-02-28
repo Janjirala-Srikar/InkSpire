@@ -2,7 +2,7 @@ const exp = require("express");
 const authorApp = exp.Router();
 const expressAsyncHandler = require("express-async-handler");
 const createUserOrAuthor = require("./createUserOrAuthor");
-const Article = require("../models/articleModel");
+const Article = require("../Models/articleModel");
 const { requireAuth, clerkMiddleware } = require("@clerk/express");
 require("dotenv").config();
 
