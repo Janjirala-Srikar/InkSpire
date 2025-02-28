@@ -1,9 +1,9 @@
 const exp=require('express')
 const userApp=exp.Router();
-const UserAuthor=require("../Models/userAuthorModel")
+const UserAuthor=require("../models/userAuthorModel")
 const expressAsyncHandler=require("express-async-handler");
 const createUserOrAuthor=require("./createUserOrAuthor");
-const Article=require("../Models/articleModel")
+const Article=require("../models/articleModel")
 const {requireAuth,clerkMiddleware}=require("@clerk/express")
 
 //API
