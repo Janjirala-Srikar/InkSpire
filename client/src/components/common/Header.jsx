@@ -83,7 +83,9 @@ function Header() {
                 <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>
                   Sign Up
                 </Link>
-                <a href="#footer" onClick={scrollToFooter}>About Us</a>
+                <Link to="/signin" onClick={() => setMobileMenuOpen(false)}>
+                  Admin
+                </Link>
               </>
             ) : (
               <div className="user-info-mobile">
