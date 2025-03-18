@@ -2,7 +2,7 @@ import React from "react";
 import { SignIn } from "@clerk/clerk-react";
 import './SignIn.css'
 
-const SignInPage = () => {
+const Signin = () => {
   return (
     <div className="box1">
       <SignIn
@@ -11,4 +11,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default Signin;

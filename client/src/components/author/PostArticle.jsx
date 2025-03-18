@@ -42,7 +42,7 @@ function PostArticle() {
 
     try {
       // Make HTTP POST request to create new article in backend
-      const res = await axios.post('http://localhost:3000/author-api/article', articleObj);
+      const res = await axios.post('https://inkspire-hjlx.onrender.com/author-api/article', articleObj);
       if (res.status === 201) {
         // Navigate to articles component
         navigate(`/author-profile/${currentUser.email}/articles`);

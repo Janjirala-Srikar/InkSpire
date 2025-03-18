@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { IoIosArrowDown } from "react-icons/io";
 // Import React Icons
-import { FaBook, FaPen, FaGithub, FaInstagram, FaLinkedin, FaReact, FaNodeJs } from 'react-icons/fa';
+import { FaBook, FaPen, FaGithub, FaInstagram, FaLinkedin, FaReact, FaNodeJs, FaSpinner } from 'react-icons/fa';
 import { SiMongodb, SiExpress, SiBootstrap, SiClerk} from 'react-icons/si';
 import { MdSecurity, MdOutlineContentPaste, MdDashboard} from 'react-icons/md';
 import { FaThinkPeaks} from "react-icons/fa";
@@ -27,8 +27,8 @@ function Home() {
     
     try {
       const endpoint = selectedRole === 'author' 
-        ? 'http://localhost:3000/author-api/author' 
-        : 'http://localhost:3000/user-api/user';
+        ? 'https://inkspire-hjlx.onrender.com/author-api/author' 
+        : 'https://inkspire-hjlx.onrender.com/user-api/user';
       
       const res = await axios.post(endpoint, updatedUser);
       const { message, payload } = res.data;
@@ -45,6 +45,12 @@ function Home() {
       setIsSubmitting(false);
     }
   }
+  const scrollToFooter = (e) => {
+    e.preventDefault();
+    document.querySelector("footer")?.scrollIntoView({ behavior: "smooth" });
+    setMobileMenuOpen(false);
+  };
+
 
   useEffect(() => {
     if (isSignedIn && user) {
@@ -67,15 +73,6 @@ function Home() {
     }
   }, [currentUser]);
 
-  if (!isLoaded) {
-    return (
-      <div className="loading-container">
-        <div className="spinner-border text-light" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    );
-  }
 
   if (!isSignedIn) {
     return (
@@ -105,8 +102,8 @@ function Home() {
                 </div>
                 
                 <div className="hero-buttons">
-                  <button className="btn btn-lg primary-btn">Get Started</button>
-                  <button className="btn btn-lg btn-outline-light ms-2">Learn More</button>
+                  <button className="btn btn-lg primary-btn" onClick={()=>{navigate('/signin')}}>Get Started</button>
+                  <button className="btn btn-lg btn-outline-light ms-2" onClick={scrollToFooter}>Know More</button>
                 </div>
                 
                 <div className="scroll-indicator">
@@ -330,8 +327,8 @@ function Home() {
                 <div className="row g-4">
                   <div className="col-md-6">
                     <div 
-                      className="role-option author-role"
-                      onClick={() => onSelectRole('author')}
+                      className={`role-option author-role ${isSubmitting ? 'disabled' : ''}`}
+                      onClick={() => !isSubmitting && onSelectRole('author')}
                     >
                       <div className="role-option-body">
                         <div className="role-icon author-role-icon">
@@ -345,8 +342,8 @@ function Home() {
                   
                   <div className="col-md-6">
                     <div 
-                      className="role-option reader-role"
-                      onClick={() => onSelectRole('user')}
+                      className={`role-option reader-role ${isSubmitting ? 'disabled' : ''}`}
+                      onClick={() => !isSubmitting && onSelectRole('user')}
                     >
                       <div className="role-option-body">
                         <div className="role-icon reader-role-icon">
@@ -360,10 +357,9 @@ function Home() {
                 </div>
                 
                 {isSubmitting && (
-                  <div className="loading-indicator">
-                    <div className="spinner-border spinner-border-sm text-primary" role="status">
-                      <span className="visually-hidden">Loading...</span>
-                    </div>
+                  <div className="spinner-container text-center mt-4">
+                    <FaSpinner className="spinner-icon" />
+                    <p className="spinner-text mt-2">Processing your selection...</p>
                   </div>
                 )}
               </div>

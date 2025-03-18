@@ -1,5 +1,6 @@
 const exp = require("express");
 const authorApp = exp.Router();
+const userAuthor=require("../Models/userAuthorModel")
 const expressAsyncHandler = require("express-async-handler");
 const createUserOrAuthor = require("./createUserOrAuthor");
 const Article = require("../Models/articleModel");

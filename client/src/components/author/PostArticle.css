@@ -25,7 +25,7 @@
 }
 
 .form-header h2 {
-  color: #daa520; /* goldenrod */
+  color: #e6c07b;
   font-size: 1.75rem;
   font-weight: 600;
   margin: 0;
@@ -42,7 +42,7 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #daa520;
+  color: #e6c07b;
   font-weight: 500;
   font-size: 1rem;
 }
@@ -64,7 +64,7 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #daa520;
+  border-color: #e6c07b;
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
 }
@@ -100,12 +100,12 @@
 }
 
 .btn-primary {
-  background-color: #daa520;
+  background-color: #e6c07b;
   color: #121212;
 }
 
 .btn-primary:hover {
-  background-color: #b8860b;
+  background-color:#e6c07b;
 }
 
 .btn-secondary {
@@ -169,14 +169,14 @@
 
 /* Fix for the dropdown hover state */
 .form-group select:hover {
-  border-color: #daa520;
+  border-color:#e6c07b;
   cursor: pointer;
 }
 
 /* Fix for the open dropdown */
 .form-group select:focus {
   outline: none;
-  border-color: #daa520;
+  border-color: #e6c07b;
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
 }

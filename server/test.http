@@ -2,7 +2,7 @@
 
 
 ### create author
-POST http://localhost:3000/author-api/author
+POST https://inkspire-hjlx.onrender.com/author-api/author
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ###create user
-POST http://localhost:3000/user-api/user
+POST https://inkspire-hjlx.onrender.com/user-api/user
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 
 ###post new article
-POST http://localhost:3000/author-api/article
+POST https://inkspire-hjlx.onrender.com/author-api/article
 Content-Type: application/json
 
 {
@@ -54,16 +54,16 @@ Content-Type: application/json
 
 
 ### Read all articles by user
-GET http://localhost:3000/user-api/articles
+GET https://inkspire-hjlx.onrender.com/user-api/articles
 
 
 ### Read all articles by author
-GET http://localhost:3000/author-api/articles
+GET https://inkspire-hjlx.onrender.com/author-api/articles
 
 
 
 ### edit article by id
-PUT http://localhost:3000/author-api/article/67a35e3374656f221e291816
+PUT https://inkspire-hjlx.onrender.com/author-api/article/67a35e3374656f221e291816
 Content-Type: application/json
 
 {
@@ -84,7 +84,7 @@ Content-Type: application/json
 }
 
 ### post comment by article id
-PUT http://localhost:3000/user-api/comment/1739540391145
+PUT https://inkspire-hjlx.onrender.com/user-api/comment/1739540391145
 Content-Type: application/json
 
 {
@@ -97,7 +97,7 @@ Content-Type: application/json
 
 
 ### delete atricle by article id
-PUT http://localhost:3000/author-api/articles/67a35e3374656f221e291816
+PUT https://inkspire-hjlx.onrender.com/author-api/articles/67a35e3374656f221e291816
 Content-Type: application/json
 
 {

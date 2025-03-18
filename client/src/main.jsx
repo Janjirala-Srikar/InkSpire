@@ -10,11 +10,13 @@ import Signup from './components/common/Signup.jsx'
 import UserProfile from './components/user/UserProfile.jsx'
 import Articles from './components/common/Articles.jsx'
 import ArticleByID from './components/common/ArticleByID.jsx'
-import AuthorProfile from './components/author/AuthorProfile.jsx'
+import AuthorProfile from './components/author/AuthorProfile/AuthorProfile.jsx'
 import PostArticle from './components/author/PostArticle.jsx'
 import 'bootstrap/dist/css/bootstrap.css'
 import UserAuthorContext from './contexts/UserAuthorContext.jsx'
 
+
+import {ArticleContextProvider} from '../src/contexts/ArticleContext.jsx'
 
 const browserRouterObject=createBrowserRouter([
   {
@@ -78,9 +80,11 @@ const browserRouterObject=createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ArticleContextProvider>
     <UserAuthorContext>
       <RouterProvider router={browserRouterObject}>
       </RouterProvider>
       </UserAuthorContext>
+      </ArticleContextProvider>
   </StrictMode>,
 )
