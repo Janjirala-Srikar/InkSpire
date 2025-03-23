@@ -25,7 +25,7 @@ mongoose
 
 // Middleware
 app.use(exp.json());
-app.get('/',()=>{
+app.get('/',(req,res)=>{
    res.send("Welocme to InkSpire")
 })
 
