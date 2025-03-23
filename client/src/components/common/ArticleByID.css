@@ -1,21 +1,44 @@
+/* Base and Typography Responsive Styles */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 /* Article Card Styles */
 .article-card {
-  margin-bottom: 3rem;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   background-color: #333231;
-  max-width: 1200px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  width: 100%;
 }
 
 .article-header {
-  padding: 1.5rem;
+  padding: 1rem;
   position: relative;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .article-header {
-    padding: 2.5rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .article-header {
+    padding: 1rem;
   }
 }
 
@@ -31,12 +54,46 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 576px) {
+  .category-badge {
+    top: 15px;
+    right: 15px;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
 .article-title {
   margin-bottom: 1.5rem;
   font-weight: 700;
   color: #FFFFFF;
   font-size: 2.5rem;
   line-height: 1.2;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+@media (max-width: 992px) {
+  .article-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    max-width: 75%;
+  }
+}
+
+@media (max-width: 576px) {
+  .article-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    max-width: 100%;
+    padding-top: 1.5rem;
+  }
 }
 
 .author-info {
@@ -45,6 +102,21 @@
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .author-info {
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .author-info {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
 }
 
 .author-image {
@@ -57,6 +129,14 @@
   border: 2px solid white;
 }
 
+@media (max-width: 576px) {
+  .author-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 0.5rem;
+  }
+}
+
 .author-name {
   margin-bottom: 0;
   font-weight: 700;
@@ -66,11 +146,30 @@
 .date-info {
   font-size: 0.875rem;
   color: #AAAAAA;
+  white-space: normal;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .date-info {
+    font-size: 0.8rem;
+  }
 }
 
 .author-actions {
   margin-left: auto;
   display: flex;
+}
+
+@media (max-width: 576px) {
+  .author-actions {
+    margin-left: 0;
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: flex-end;
+  }
 }
 
 .action-button {
@@ -86,6 +185,13 @@
   border: none;
 }
 
+@media (max-width: 576px) {
+  .action-button {
+    width: 38px;
+    height: 38px;
+  }
+}
+
 .article-content {
   white-space: pre-line;
   line-height: 1.8;
@@ -93,6 +199,22 @@
   font-size: 1.125rem;
   max-width: 90ch;
   margin: 0 auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 992px) {
+  .article-content {
+    max-width: 100%;
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .article-content {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 }
 
 /* Comments Section Styles */
@@ -116,15 +238,35 @@
   }
 }
 
+@media (max-width: 576px) {
+  .comments-padding {
+    padding: 1rem;
+  }
+}
+
 .comments-title {
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: #E5E5E5;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 576px) {
+  .comments-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .no-comments {
   text-align: center;
   padding: 2rem 0;
+}
+
+@media (max-width: 576px) {
+  .no-comments {
+    padding: 1.5rem 0;
+  }
 }
 
 .no-comments-text {
@@ -137,18 +279,23 @@
   margin-bottom: 0.75rem;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  
 }
 
 .comment-card-body {
   padding: 1rem;
- 
+}
+
+@media (max-width: 576px) {
+  .comment-card-body {
+    padding: 0.75rem;
+  }
 }
 
 .comment-header {
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .comment-avatar {
@@ -163,6 +310,14 @@
   background: linear-gradient(135deg, #4F46E5, #7C3AED);
 }
 
+@media (max-width: 576px) {
+  .comment-avatar {
+    width: 36px;
+    height: 36px;
+    margin-right: 0.5rem;
+  }
+}
+
 .comment-author {
   margin-bottom: 0;
   font-weight: 700;
@@ -171,6 +326,7 @@
 
 .comment-date {
   color: #AAAAAA;
+  font-size: 0.75rem;
 }
 
 .comment-text {
@@ -178,6 +334,14 @@
   margin-left: 3.5rem;
   padding-left: 0.25rem;
   color: #CCCCCC;
+  word-wrap: break-word;
+}
+
+@media (max-width: 576px) {
+  .comment-text {
+    margin-left: 3rem;
+    font-size: 0.95rem;
+  }
 }
 
 .success-alert {
@@ -187,6 +351,7 @@
   border-radius: 8px;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
+  word-wrap: break-word;
 }
 
 .comment-button {
@@ -199,6 +364,13 @@
   margin-bottom: 0.75rem;
 }
 
+@media (max-width: 576px) {
+  .comment-button {
+    padding: 6px 18px;
+    font-size: 0.9rem;
+  }
+}
+
 .comment-form {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
@@ -207,6 +379,12 @@
 
 .comment-form-body {
   padding: 1rem;
+}
+
+@media (max-width: 576px) {
+  .comment-form-body {
+    padding: 0.75rem;
+  }
 }
 
 .comment-textarea {
@@ -221,10 +399,24 @@
   margin-bottom: 0.75rem;
 }
 
+@media (max-width: 576px) {
+  .comment-textarea {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
 .comment-form-actions {
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .comment-form-actions {
+    flex-direction: row;
+    width: 100%;
+  }
 }
 
 .cancel-button {
@@ -243,6 +435,13 @@
   font-weight: 500;
   border: none;
   color: white;
+}
+
+@media (max-width: 576px) {
+  .cancel-button, .post-button {
+    padding: 6px 16px;
+    font-size: 0.9rem;
+  }
 }
 
 /* Edit Form Styles */
@@ -265,10 +464,23 @@
   }
 }
 
+@media (max-width: 576px) {
+  .edit-card-body {
+    padding: 1rem;
+  }
+}
+
 .edit-title {
   margin-bottom: 1.5rem;
   font-weight: 700;
   color: #E5E5E5;
+}
+
+@media (max-width: 576px) {
+  .edit-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .form-label {
@@ -291,6 +503,12 @@
   height: auto;
 }
 
+@media (max-width: 576px) {
+  .form-control, .form-select {
+    padding: 10px 12px;
+  }
+}
+
 .form-textarea {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
@@ -301,11 +519,23 @@
   width: 100%;
 }
 
+@media (max-width: 576px) {
+  .form-textarea {
+    padding: 12px;
+  }
+}
+
 .form-actions {
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
   margin-top: 1.5rem;
+}
+
+@media (max-width: 576px) {
+  .form-actions {
+    margin-top: 1rem;
+  }
 }
 
 .save-button {
@@ -315,4 +545,38 @@
   font-weight: 500;
   border: none;
   color: white;
+}
+
+@media (max-width: 576px) {
+  .save-button {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Container responsive fixes */
+@media (max-width: 992px) {
+  .container.my-5 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container.my-5 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .row {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+  
+  .col-lg-10 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 }

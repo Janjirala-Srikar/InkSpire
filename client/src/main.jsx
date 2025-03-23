@@ -14,6 +14,7 @@ import AuthorProfile from './components/author/AuthorProfile/AuthorProfile.jsx'
 import PostArticle from './components/author/PostArticle.jsx'
 import 'bootstrap/dist/css/bootstrap.css'
 import UserAuthorContext from './contexts/UserAuthorContext.jsx'
+import Admin from './components/Admin/admin.jsx'
 
 
 import {ArticleContextProvider} from '../src/contexts/ArticleContext.jsx'
@@ -73,9 +74,14 @@ const browserRouterObject=createBrowserRouter([
             element: <Navigate to="articles" />
           }
         ]
+      },
+      {
+          path:'/admin',
+          element:<Admin/>,
+        
       }
   ]
-  }
+  },
 ])
 
 createRoot(document.getElementById('root')).render(

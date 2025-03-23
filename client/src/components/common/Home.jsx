@@ -16,9 +16,16 @@ function Home() {
   const { isSignedIn, user, isLoaded } = useUser();
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isChecking, setIsChecking] = useState(true); // Added state for checking admin status
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   async function onSelectRole(role) {
+    // Check if user is inactive first
+    if (currentUser && currentUser.isActive === false) {
+      return; // Don't proceed if user is inactive
+    }
+    
     setError('');
     setIsSubmitting(true);
     
@@ -45,30 +52,99 @@ function Home() {
       setIsSubmitting(false);
     }
   }
+
   const scrollToFooter = (e) => {
     e.preventDefault();
     document.querySelector("footer")?.scrollIntoView({ behavior: "smooth" });
     setMobileMenuOpen(false);
   };
 
-
+  // Check if the user is an admin
   useEffect(() => {
-    if (isSignedIn && user) {
-      setCurrentUser({
-        ...currentUser,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.emailAddresses[0].emailAddress,
-        profileImageUrl: user.imageUrl,
-      });
-    }
+    const checkAdminStatus = async () => {
+      if (isSignedIn && user) {
+        setIsChecking(true);
+        try {
+          // First set the basic user info
+          const userInfo = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.emailAddresses[0].emailAddress,
+            profileImageUrl: user.imageUrl,
+          };
+          
+          setCurrentUser({
+            ...currentUser,
+            ...userInfo
+          });
+          
+          // Check if user exists in the database and if they are an admin
+          const response = await axios.get(
+            `http://localhost:3000/admin-api/check-admin?email=${userInfo.email}`
+          );
+          
+          if (response.data.isAdmin) {
+            // User is an admin, set the user in context and navigate
+            const updatedUserInfo = {
+              ...userInfo,
+              role: response.data.role,
+              userId: response.data.userId
+            };
+            
+            setCurrentUser({
+              ...currentUser,
+              ...updatedUserInfo
+            });
+            
+            // Save to localStorage with expiration time (e.g., 1 hour)
+            const expiresAt = new Date().getTime() + (60 * 60 * 1000);
+            localStorage.setItem("currentUser", JSON.stringify({
+              ...updatedUserInfo,
+              expiresAt
+            }));
+            
+            navigate('/admin');
+          } else {
+            // User exists but is not an admin
+            localStorage.setItem("currentUser", JSON.stringify({
+              ...userInfo,
+              role: 'user'
+            }));
+          }
+        } catch (err) {
+          console.error("Admin check error:", err);
+          // Clear any admin status if there was an error
+          const storedUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
+          if (storedUser.role === 'admin') {
+            localStorage.setItem("currentUser", JSON.stringify({
+              ...storedUser,
+              role: 'user'
+            }));
+          }
+        } finally {
+          setIsChecking(false);
+        }
+      } else if (isLoaded && !isSignedIn) {
+        setIsChecking(false);
+        // Clear user data when signed out
+        localStorage.removeItem("currentUser");
+      }
+    };
+    
+    checkAdminStatus();
   }, [isLoaded, isSignedIn, user]);
-
   useEffect(() => {
-    if (currentUser?.role === "user" && error.length === 0) {
-      navigate(`/user-profile/${currentUser.email}`);
+    // Don't navigate if user is inactive
+    if (currentUser?.isActive === false) {
+      return;
     }
-    if (currentUser?.role === "author" && error.length === 0) {
+    
+    // Check various roles and navigate
+    if (currentUser?.role === "admin" && error.length === 0) {
+      navigate('/admin');
+    } else if (currentUser?.role === "user" && error.length === 0) {
+      navigate(`/user-profile/${currentUser.email}`);
+    } else if (currentUser?.role === "author" && error.length === 0) {
       navigate(`/author-profile/${currentUser.email}`);
     }
   }, [currentUser]);
@@ -295,6 +371,18 @@ function Home() {
     );
   }
 
+  // Show loader while checking admin status
+  if (isChecking) {
+    return (
+      <div className="loader-container">
+        <div className="spinner-container text-center">
+          <FaSpinner className="spinner-icon" />
+          <p className="spinner-text mt-2">Checking user status...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="role-selection-container">
       <div className="container py-5">
@@ -324,37 +412,46 @@ function Home() {
                   </div>
                 )}
                 
-                <div className="row g-4">
-                  <div className="col-md-6">
-                    <div 
-                      className={`role-option author-role ${isSubmitting ? 'disabled' : ''}`}
-                      onClick={() => !isSubmitting && onSelectRole('author')}
-                    >
-                      <div className="role-option-body">
-                        <div className="role-icon author-role-icon">
-                          <FaPen />
+                {currentUser && currentUser.isActive === false ? (
+                  <div className="alert alert-danger" role="alert">
+                    <h4 className="alert-heading">Account Temporarily Blocked</h4>
+                    <p>Your account has been temporarily blocked by an admin. Please contact the administrator for assistance.</p>
+                    <hr />
+                    <p className="mb-0">Email: support@inkspire.com</p>
+                  </div>
+                ) : (
+                  <div className="row g-4">
+                    <div className="col-md-6">
+                      <div 
+                        className={`role-option author-role ${isSubmitting ? 'disabled' : ''}`}
+                        onClick={() => !isSubmitting && onSelectRole('author')}
+                      >
+                        <div className="role-option-body">
+                          <div className="role-icon author-role-icon">
+                            <FaPen />
+                          </div>
+                          <h4 className="role-name">Author</h4>
+                          <p className="role-description">Create, share, and inspire others with your expertise and creativity</p>
                         </div>
-                        <h4 className="role-name">Author</h4>
-                        <p className="role-description">Create, share, and inspire others with your expertise and creativity</p>
+                      </div>
+                    </div>
+                    
+                    <div className="col-md-6">
+                      <div 
+                        className={`role-option reader-role ${isSubmitting ? 'disabled' : ''}`}
+                        onClick={() => !isSubmitting && onSelectRole('user')}
+                      >
+                        <div className="role-option-body">
+                          <div className="role-icon reader-role-icon">
+                            <FaBook />
+                          </div>
+                          <h4 className="role-name">Reader</h4>
+                          <p className="role-description">Explore amazing content and connect with talented authors</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  
-                  <div className="col-md-6">
-                    <div 
-                      className={`role-option reader-role ${isSubmitting ? 'disabled' : ''}`}
-                      onClick={() => !isSubmitting && onSelectRole('user')}
-                    >
-                      <div className="role-option-body">
-                        <div className="role-icon reader-role-icon">
-                          <FaBook />
-                        </div>
-                        <h4 className="role-name">Reader</h4>
-                        <p className="role-description">Explore amazing content and connect with talented authors</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                )}
                 
                 {isSubmitting && (
                   <div className="spinner-container text-center mt-4">

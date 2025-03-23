@@ -99,18 +99,15 @@ function Articles({ contextSource = 'author' }) {
     }
   }, [searchTerm, filters, articles]);
 
-  // Fixed date formatting function
-  function formatDate(dateString) {
-   
+  // Get badge color based on category
+  function getCategoryBadgeColor(category) {
+    if (!category) return '#7c3aed'; // Default to purple
     
-    const date = new Date(dateString);
-    
-    // Check if date is valid
-    if (isNaN(date.getTime())) {
-      return 'Unknown date';
-    }
-    
-    return date.toLocaleDateString();
+    const categoryLower = category.toLowerCase();
+    // if (categoryLower === 'programming') {
+    //   return '#E0B66E';  // Programming gets the custom color
+    // }
+    return '#7c3aed';  // All others get purple
   }
 
   // Skeleton Loader for Cards
@@ -160,7 +157,12 @@ function Articles({ contextSource = 'author' }) {
                 <div className='article-card' key={articleObj.articleId}>
                   <div className="article-card-inner" style={{ background: '#1c1b1a' }}>
                     <div className="category-label">
-                      <span className="category-badge">{articleObj.category || 'programming'}</span>
+                      <span 
+                        className="category-badge" 
+                        style={{ background: getCategoryBadgeColor(articleObj.category) }}
+                      >
+                        {articleObj.category || 'programming'}
+                      </span>
                     </div>
                     <h2 className="article-title">{articleObj.title}</h2>
                     <p className="article-excerpt">
@@ -182,7 +184,7 @@ function Articles({ contextSource = 'author' }) {
                         </span>
                       </div>
                       <span className="modified-date">
-                        {formatDate(articleObj.dateOfModification)}
+                        {articleObj.dateOfModification || 'No date'}
                       </span>
                     </div>
                   </div>

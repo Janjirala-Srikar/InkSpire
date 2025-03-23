@@ -358,7 +358,6 @@
               radial-gradient(circle at bottom right, rgba(52, 152, 219, 0.1), transparent 70%);
   display: flex;
   align-items: center;
-  padding: 1rem; /* Added padding */
 }
 
 .role-selection-card {
@@ -665,9 +664,7 @@
     padding-right: 1rem;
   }
   
-  .role-selection-card {
-    margin: 1rem;
-  }
+ 
   
   .feature-card, 
   .feature-card-horizontal {
@@ -797,3 +794,5 @@
     transform: rotate(360deg);
   }
 }
+
+
