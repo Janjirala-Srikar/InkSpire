@@ -25,6 +25,9 @@ mongoose
 
 // Middleware
 app.use(exp.json());
+app.get('/',()=>{
+   res.send("Welocme to InkSpire")
+})
 
 // Connect API routes
 app.use("/user-api", userApp);
