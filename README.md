@@ -93,9 +93,9 @@ We welcome contributions! To contribute:
 
 ## **Contact**
 For any queries or collaboration, feel free to reach out:
-- **Email**: your-email@example.com
-- **GitHub**: [yourusername](https://github.com/yourusername)
-- **LinkedIn**: [Your Profile](https://linkedin.com/in/yourprofile)
+- **Email**: srikarjanjirala92@gmail.com
+- **GitHub**: [janjirala-srikar](https://github.com/janjirala-srikar)
+- **LinkedIn**: [srikar_janjirala](https://linkedin.com/in/srikar-janjirala)
 
 Happy Blogging! 🚀
 
