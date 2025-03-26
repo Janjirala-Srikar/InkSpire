@@ -5,7 +5,7 @@ InkSpire is an intuitive and secure blogging web application designed to empower
 ---
 
 ## **Features**
-✔️ **Secure Authentication** – Powered by **Clerk**, InkSpire offers a hassle-free and secure authentication system with login, signup, and session management. JWT (JSON Web Token) is used for secure authorization.
+✔️ **Secure Authentication** – Powered by **Clerk**, InkSpire offers a hassle-free and secure authentication system with login, signup, and session management. JWT (JSON Web Token) is used for secure authorization.\n
 ✔️ **Create & Manage Blogs** – Users can effortlessly **write, edit, delete, and manage** their blog posts with a simple and intuitive interface.
 ✔️ **Responsive UI** – A well-designed, mobile-friendly interface that provides a **smooth reading and writing experience** across all devices.
 ✔️ **Robust Tech Stack** – Built using **React, Node.js, Express, and MongoDB**, ensuring a scalable and high-performance platform.
